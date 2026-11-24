@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://iaxio88jw431"]
+
+[ext_resource type="Script" uid="uid://fio010gbxixc" path="res://scripts/pause_menu.gd" id="1_kukqi"]
+[ext_resource type="Shader" uid="uid://cwlwqvos8oo0h" path="res://ui/glass_panel.gdshader" id="1_myx47"]
+[ext_resource type="Script" uid="uid://vkmchqi3txhq" path="res://ui/glass_panel.gd" id="2_kukqi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5d2l8"]
+shader = ExtResource("1_myx47")
+shader_parameter/rect_size = Vector2(171, 227)
+shader_parameter/corner_radii = Vector4(24, 24, 24, 24)
+shader_parameter/blur_px = 12.0
+shader_parameter/frost = 0.06
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1181191506]
+layer = 10
+script = ExtResource("1_kukqi")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=547485603]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1143952566]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GlassPanel" type="PanelContainer" parent="CenterContainer" unique_id=1258187277]
+material = SubResource("ShaderMaterial_5d2l8")
+layout_mode = 2
+script = ExtResource("2_kukqi")
+metadata/_custom_type_script = "uid://vkmchqi3txhq"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/GlassPanel" unique_id=925061322]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="CenterContainer/GlassPanel/VBoxContainer" unique_id=1532423757]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 48
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/GlassPanel/VBoxContainer" unique_id=249056244]
+layout_mode = 2
+
+[node name="ButtonResume" type="Button" parent="CenterContainer/GlassPanel/VBoxContainer" unique_id=192643148]
+layout_mode = 2
+text = "Resume"
+
+[node name="ButtonMainMenu" type="Button" parent="CenterContainer/GlassPanel/VBoxContainer" unique_id=1172204633]
+layout_mode = 2
+text = "Main Menu"
+
+[connection signal="pressed" from="CenterContainer/GlassPanel/VBoxContainer/ButtonResume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CenterContainer/GlassPanel/VBoxContainer/ButtonMainMenu" to="." method="_on_menu_pressed"]

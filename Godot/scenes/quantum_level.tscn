@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://bgtiyak4dj5ti"]
+
+[ext_resource type="PackedScene" uid="uid://d2k3mob7d4bda" path="res://scenes/field.tscn" id="1_eexyx"]
+[ext_resource type="Script" uid="uid://bbl1swgkgqq62" path="res://scripts/cat_wander.gd" id="2_q304k"]
+[ext_resource type="Texture2D" uid="uid://5i1m4newby0c" path="res://assets/textures/CatSprite1.png" id="3_an7ue"]
+[ext_resource type="Shader" uid="uid://cwlwqvos8oo0h" path="res://ui/glass_panel.gdshader" id="4_m73a8"]
+[ext_resource type="Script" uid="uid://vkmchqi3txhq" path="res://ui/glass_panel.gd" id="5_h6qc7"]
+[ext_resource type="PackedScene" uid="uid://iaxio88jw431" path="res://scenes/pause_menu.tscn" id="5_m73a8"]
+[ext_resource type="Texture2D" uid="uid://8mnxdreeb2kq" path="res://assets/ui/ring_track.png" id="6_r14ey"]
+[ext_resource type="Texture2D" uid="uid://2yg4x8dl3ajn" path="res://assets/ui/ring_fill.png" id="7_wu6h1"]
+[ext_resource type="Texture2D" uid="uid://dj8h2ucxljjc4" path="res://assets/textures/CatIcon.svg" id="8_2isxe"]
+[ext_resource type="PackedScene" uid="uid://de2is0nbsfmj4" path="res://scenes/cat_card.tscn" id="9_wu6h1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wu6h1"]
+shader = ExtResource("4_m73a8")
+shader_parameter/rect_size = Vector2(240, 290)
+shader_parameter/corner_radii = Vector4(0, 0, 90, 0)
+shader_parameter/blur_px = 12.0
+shader_parameter/frost = 0.06
+
+[node name="QuantumLevel" type="Node3D" unique_id=1729626503]
+
+[node name="Field" parent="." unique_id=589490337 instance=ExtResource("1_eexyx")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1470828616]
+transform = Transform3D(0.64278764, 0.58682406, -0.4924039, 0, 0.64278764, 0.76604444, 0.76604444, -0.4924039, 0.41317594, -3.5, 7, 5)
+current = true
+fov = 60.0
+
+[node name="Cat" type="Node3D" parent="." unique_id=10552044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+script = ExtResource("2_q304k")
+wander_radius = 2.0
+
+[node name="Sprite3D" type="Sprite3D" parent="Cat" unique_id=1048893740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
+pixel_size = 0.0005
+billboard = 1
+alpha_cut = 2
+texture = ExtResource("3_an7ue")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=168877729]
+
+[node name="TopLeft" type="PanelContainer" parent="HUD" unique_id=990901176]
+material = SubResource("ShaderMaterial_wu6h1")
+offset_right = 101.0
+offset_bottom = 101.0
+theme_type_variation = &"GlassQuadrant"
+script = ExtResource("5_h6qc7")
+metadata/_custom_type_script = "uid://vkmchqi3txhq"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/TopLeft" unique_id=1911519887]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Top" type="HBoxContainer" parent="HUD/TopLeft/VBoxContainer" unique_id=1497840100]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="InkRing" type="TextureProgressBar" parent="HUD/TopLeft/VBoxContainer/Top" unique_id=1261844297]
+layout_mode = 2
+value = 85.0
+fill_mode = 4
+texture_under = ExtResource("6_r14ey")
+texture_progress = ExtResource("7_wu6h1")
+
+[node name="TextureRect" type="TextureRect" parent="HUD/TopLeft/VBoxContainer/Top/InkRing" unique_id=997163873]
+modulate = Color(1, 1, 1, 0.8627451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_2isxe")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Info" type="VBoxContainer" parent="HUD/TopLeft/VBoxContainer/Top" unique_id=1693345915]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LevelLabel" type="Label" parent="HUD/TopLeft/VBoxContainer/Top/Info" unique_id=898966962]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "LEVEL 1"
+
+[node name="TimeLabel" type="Label" parent="HUD/TopLeft/VBoxContainer/Top/Info" unique_id=329983433]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "1:30"
+
+[node name="StateTitle" type="Label" parent="HUD/TopLeft/VBoxContainer" unique_id=1628128446]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_colors/font_shadow_color = Color(0.11551931, 0.000104118844, 0.1826087, 1)
+theme_override_font_sizes/font_size = 15
+text = "STATE & PROBABILITY"
+
+[node name="Cats" type="HBoxContainer" parent="HUD/TopLeft/VBoxContainer" unique_id=1088094085]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="CatCard" parent="HUD/TopLeft/VBoxContainer/Cats" unique_id=618006315 instance=ExtResource("9_wu6h1")]
+layout_mode = 2
+
+[node name="CatCard2" parent="HUD/TopLeft/VBoxContainer/Cats" unique_id=20822691 instance=ExtResource("9_wu6h1")]
+layout_mode = 2
+
+[node name="CatCard3" parent="HUD/TopLeft/VBoxContainer/Cats" unique_id=1831556481 instance=ExtResource("9_wu6h1")]
+layout_mode = 2
+
+[node name="CatCard4" parent="HUD/TopLeft/VBoxContainer/Cats" unique_id=1838274821 instance=ExtResource("9_wu6h1")]
+layout_mode = 2
+
+[node name="PauseMenu" parent="." unique_id=1181191506 instance=ExtResource("5_m73a8")]

@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cn4t3m0tk5ti0"]
+
+[ext_resource type="PackedScene" uid="uid://d2k3mob7d4bda" path="res://scenes/field.tscn" id="1_6fugx"]
+[ext_resource type="Script" uid="uid://d15nwff4oa43d" path="res://scripts/player.gd" id="2_70d60"]
+[ext_resource type="Script" uid="uid://bbl1swgkgqq62" path="res://scripts/cat_wander.gd" id="3_svpjq"]
+[ext_resource type="Texture2D" uid="uid://5i1m4newby0c" path="res://assets/textures/CatSprite1.png" id="4_q3ffw"]
+[ext_resource type="PackedScene" uid="uid://iaxio88jw431" path="res://scenes/pause_menu.tscn" id="5_70d60"]
+[ext_resource type="Texture2D" uid="uid://b2goxeelpde5v" path="res://assets/textures/CatSprite2.png" id="5_e5yjv"]
+[ext_resource type="Texture2D" uid="uid://c4vst02koi65v" path="res://assets/textures/CatSprite3.png" id="6_hq0b1"]
+[ext_resource type="Texture2D" uid="uid://bde04fiuo0g2u" path="res://assets/textures/CatSprite6.png" id="7_rb0kc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5m0d8"]
+radius = 0.25
+height = 1.5
+
+[node name="World" type="Node3D" unique_id=1891973766]
+
+[node name="Field" parent="." unique_id=589490337 instance=ExtResource("1_6fugx")]
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=915141406]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -1.7815266, 1, 7.188566)
+script = ExtResource("2_70d60")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=915322036]
+shape = SubResource("CapsuleShape3D_5m0d8")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=354689898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+
+[node name="Cat1" type="Node3D" parent="." unique_id=1628081013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+script = ExtResource("3_svpjq")
+wander_radius = 2.0
+
+[node name="Sprite3D" type="Sprite3D" parent="Cat1" unique_id=113716581]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
+pixel_size = 0.0005
+billboard = 1
+alpha_cut = 2
+texture = ExtResource("4_q3ffw")
+
+[node name="Cat2" type="Node3D" parent="." unique_id=1376020130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5141139, 0, -0.080408335)
+script = ExtResource("3_svpjq")
+wander_radius = 2.0
+
+[node name="Sprite3D" type="Sprite3D" parent="Cat2" unique_id=1649821633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
+pixel_size = 0.0005
+billboard = 1
+alpha_cut = 2
+texture = ExtResource("5_e5yjv")
+
+[node name="Cat3" type="Node3D" parent="." unique_id=1330328470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3344145, 0, -0.993968)
+script = ExtResource("3_svpjq")
+wander_radius = 2.0
+
+[node name="Sprite3D" type="Sprite3D" parent="Cat3" unique_id=1824406304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
+pixel_size = 0.0005
+billboard = 1
+alpha_cut = 2
+texture = ExtResource("6_hq0b1")
+
+[node name="Cat4" type="Node3D" parent="." unique_id=1081253906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.334056, 0, 2.3110008)
+script = ExtResource("3_svpjq")
+wander_radius = 2.0
+
+[node name="Sprite3D" type="Sprite3D" parent="Cat4" unique_id=942861324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
+pixel_size = 0.0005
+billboard = 1
+alpha_cut = 2
+texture = ExtResource("7_rb0kc")
+
+[node name="PauseMenu" parent="." unique_id=1181191506 instance=ExtResource("5_70d60")]

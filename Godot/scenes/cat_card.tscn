@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://de2is0nbsfmj4"]
+
+[ext_resource type="Texture2D" uid="uid://dj8h2ucxljjc4" path="res://assets/textures/CatIcon.svg" id="1_rrn6i"]
+
+[node name="CatCard" type="VBoxContainer" unique_id=618006315]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1520692545]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_rrn6i")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Ket" type="Label" parent="." unique_id=185306457]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.89411765, 0.89411765, 0.89411765, 0.8235294)
+theme_override_font_sizes/font_size = 16
+text = "|00>"
+
+[node name="Pct" type="Label" parent="." unique_id=142293485]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "40%"
