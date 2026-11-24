@@ -2,7 +2,7 @@
 
 A small 3D game made in Godot.
 
-Core game idea: catch various cat's by drawing a circle around them. Currently, the game is in early-development phase.
+Core game idea: catch various cats by drawing a circle around them. Currently, the game is in early-development phase.
 
 **Play in the browser:** https://LucyferYX.github.io/CatCatcher/
 
