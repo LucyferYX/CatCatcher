@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cdbqys0rhag17" path="res://assets/textures/GrassTile.png" id="1_lptdg"]
 [ext_resource type="PackedScene" uid="uid://b5ye327drcr1l" path="res://assets/models/witch_hut.glb" id="2_7156t"]
 [ext_resource type="PackedScene" uid="uid://b4xoq215m7tsk" path="res://assets/models/nature/patch_strip_b.glb" id="3_5by1f"]
-[ext_resource type="AudioStream" uid="uid://3vtjtr74w1kk" path="res://assets/audio/music.mp3" id="3_pn4dk"]
 [ext_resource type="PackedScene" uid="uid://cqi3wuw675sy" path="res://assets/models/nature/patch_blob_a.glb" id="3_wnvii"]
 [ext_resource type="PackedScene" uid="uid://dig5mu05ubdin" path="res://assets/models/nature/patch_strip_c.glb" id="4_odu0x"]
 [ext_resource type="PackedScene" uid="uid://c1etwkl7gfat" path="res://assets/models/nature/grass_mixed_c.glb" id="5_7b553"]
@@ -2308,8 +2307,3 @@ transform = Transform3D(-1.2552422, 0, -0.81583613, 0, 1.4970708, 0, 0.81583613,
 [node name="witch_hut" parent="Ground" unique_id=2082439007 instance=ExtResource("2_7156t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 script = ExtResource("30_odu0x")
-
-[node name="Music" type="AudioStreamPlayer" parent="." unique_id=317393866]
-stream = ExtResource("3_pn4dk")
-volume_db = -6.0
-autoplay = true

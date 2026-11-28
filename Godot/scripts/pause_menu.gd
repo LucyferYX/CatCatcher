@@ -33,6 +33,13 @@ func _on_resume_pressed() -> void:
 	Input.mouse_mode = _mouse_before
 
 
+func _on_settings_pressed() -> void:
+	$CenterContainer.hide()          # swap the pause panel for the settings panel
+	%SettingsMenu.open()
+	await %SettingsMenu.closed
+	$CenterContainer.show()
+
+
 func _on_menu_pressed() -> void:
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bwflicei854t5"]
+
+[ext_resource type="Shader" uid="uid://cwlwqvos8oo0h" path="res://ui/glass_panel.gdshader" id="1_cr101"]
+[ext_resource type="Script" uid="uid://c66nc68em7nbq" path="res://scripts/settings_menu.gd" id="1_wswnh"]
+[ext_resource type="Script" uid="uid://vkmchqi3txhq" path="res://ui/glass_panel.gd" id="2_wswnh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cr101"]
+shader = ExtResource("1_cr101")
+shader_parameter/rect_size = Vector2(360, 176)
+shader_parameter/corner_radii = Vector4(24, 24, 24, 24)
+shader_parameter/blur_px = 12.0
+shader_parameter/frost = 0.06
+
+[node name="SettingsMenu" type="Control" unique_id=126882965]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wswnh")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1799185647]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GlassPanel" type="PanelContainer" parent="CenterContainer" unique_id=1908834339]
+material = SubResource("ShaderMaterial_cr101")
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+script = ExtResource("2_wswnh")
+metadata/_custom_type_script = "uid://vkmchqi3txhq"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/GlassPanel" unique_id=881181831]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Settings" type="Label" parent="CenterContainer/GlassPanel/VBoxContainer" unique_id=1775706614]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/GlassPanel/VBoxContainer" unique_id=924957354]
+layout_mode = 2
+
+[node name="Music" type="Label" parent="CenterContainer/GlassPanel/VBoxContainer/HBoxContainer" unique_id=1087176086]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="CenterContainer/GlassPanel/VBoxContainer/HBoxContainer" unique_id=805655689]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="MusicValue" type="Label" parent="CenterContainer/GlassPanel/VBoxContainer/HBoxContainer" unique_id=464376686]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "80"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="CenterContainer/GlassPanel/VBoxContainer" unique_id=1030526913]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back"
